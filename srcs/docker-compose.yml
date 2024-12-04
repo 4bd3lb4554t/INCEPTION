@@ -1,0 +1,14 @@
+
+version: '3.8'
+
+services:
+
+    mariadb:
+        image: mariadb_image
+        build:
+            context: ./requirements/mariadb
+        ports:
+        -   "80:80"
+    
+
+        
