@@ -3,12 +3,13 @@ version: '3.8'
 
 services:
 
-    mariadb:
-        image: mariadb_image
+    nginx:
+        image: nginx_image
         build:
-            context: ./requirements/mariadb
+            context: ./requirements/nginx
         ports:
-        -   "80:80"
+        -   "443:9000"
     
+ 
 
         

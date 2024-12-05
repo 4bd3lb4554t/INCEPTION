@@ -2,13 +2,14 @@
 FROM debian:bullseye
 
 
-
 RUN  apt-get update -y 
 
 WORKDIR /mariadb
 
 COPY project  /mariadb/
 
-CMD ["bash"]
+COPY ./script.sh  /mariadb/
+
+CMD ["bash" , "./mariadb/script.sh"]
 
 

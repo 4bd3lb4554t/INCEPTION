@@ -11,7 +11,6 @@ COPY ./conf/* /etc/nginx/
 
 COPY ./tools/script.sh    /usr/local/bin/
 
-
 RUN chmod +x /usr/local/bin/script.sh
 
 
