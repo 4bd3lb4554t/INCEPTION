@@ -8,10 +8,12 @@ WORKDIR /nginx
 
 COPY ./conf/* /etc/nginx/
 
-COPY ./script.sh  /nginx/
+
+COPY ./tools/script.sh    /usr/local/bin/
 
 
-CMD ["nginx" ,  "-g" ,  "daemon off;"]
+RUN chmod +x /usr/local/bin/script.sh
 
 
+CMD ["bash" ,  "/usr/local/bin/script.sh"]
 
