@@ -1,15 +1,18 @@
 
 FROM debian:bullseye
 
+RUN apt-get update
 
-RUN  apt-get update -y 
+RUN apt install mariadb-server  -y
+
+RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
 
 WORKDIR /mariadb
 
-COPY project  /mariadb/
-
 COPY ./script.sh  /mariadb/
 
-CMD ["bash" , "./mariadb/script.sh"]
+RUN chmod +x /mariadb/script.sh
 
+EXPOSE 3306
 
+CMD ["mysqld"]

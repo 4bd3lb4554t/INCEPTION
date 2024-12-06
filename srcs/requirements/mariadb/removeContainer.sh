@@ -10,8 +10,5 @@ docker rmi $(docker images -q)
 
 docker build -t mariadb_image .
 
-# docker run --name container_mariadb  -d mariadb_image
 
-# clear
-
-# docker ps
+docker run  --name container_mariadb  -d mariadb_image

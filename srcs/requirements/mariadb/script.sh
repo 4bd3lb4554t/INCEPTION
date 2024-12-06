@@ -1,9 +1,9 @@
 
 
+apt update &&  apt upgrade -y
 
+apt install mariadb-server  -y
 
- apt update &&  apt upgrade -y
+mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
 
- apt install mariadb-server  -y
-
-
+mysqld
