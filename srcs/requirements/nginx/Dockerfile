@@ -1,18 +1,13 @@
 
 FROM debian:bullseye
 
-RUN apt-get update -y && apt-get install nginx -y && apt-get install vim -y
-
+RUN apt-get update -y && apt-get install nginx -y
 
 WORKDIR /nginx
 
 COPY ./conf/* /etc/nginx/
 
+COPY ./script.sh   /usr/local/bin/
 
-COPY ./tools/script.sh    /usr/local/bin/
-
-RUN chmod +x /usr/local/bin/script.sh
-
-
-CMD ["bash" ,  "/usr/local/bin/script.sh"]
+CMD ["script.sh"]
 

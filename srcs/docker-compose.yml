@@ -1,14 +1,34 @@
 
-version: '3.8'
 
 services:
 
     nginx:
+        depends_on:
+        - wordpress
         image: nginx_image
-        build:
-            context: ./requirements/nginx
+        build: ./requirements/nginx
         ports:
         -   "443:9000"
+        volumes:
+            - Volumedata:/var/www/wordpress
+        networks:
+        -   inception
+    wordpress:
+        image: wordpress_image
+        build: ./requirements/wordpress
+        ports:
+        -   "9000:9000"
+        volumes:
+            - Volumedata:/var/www/wordpress
+        networks:
+            - inception
+
+volumes:
+    Volumedata:
+networks:
+  inception:
+    driver: bridge
+
     
  
 

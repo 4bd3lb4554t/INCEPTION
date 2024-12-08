@@ -1,16 +1,17 @@
 
 
-docker stop $(docker ps -aq)
+# docker stop $(docker ps -aq)
 
-docker rm $(docker ps -aq)
-
-
-docker rmi $(docker images -q)
+# docker rm $(docker ps -aq)
 
 
-# docker build -t wordpress_image .
+# docker rmi $(docker images -q)
 
-# docker run --name container_wordpress  -d wordpress_image
+
+docker build -t wordpress_image .
+
+
+docker run -v aa:/var/www/wordpress -it wordpress_image bash
 
 # clear
 
