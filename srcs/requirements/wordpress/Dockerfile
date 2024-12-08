@@ -5,11 +5,9 @@ RUN apt-get update -y
 
 WORKDIR /wordpress
 
-RUN mkdir  -p /var/www/wordpress
+COPY script.sh  /usr/local/bin/
 
-COPY index.html  /var/www/wordpress
-
-CMD ["bash"]
+CMD ["script.sh"]
 
 
 

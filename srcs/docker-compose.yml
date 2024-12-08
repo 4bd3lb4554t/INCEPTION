@@ -3,8 +3,6 @@
 services:
 
     nginx:
-        depends_on:
-        - wordpress
         image: image_nginx
         container_name: container_nginx
         build: ./requirements/nginx
@@ -13,6 +11,8 @@ services:
         volumes:
             - Volumedata:/var/www/wordpress
     wordpress:
+        depends_on:
+            - nginx
         image: image_wordpresss
         container_name: container_wordpresss
         build: ./requirements/wordpress
@@ -20,6 +20,9 @@ services:
         -   "9000:9000"
         volumes:
             - Volumedata:/var/www/wordpress
+    mariadb:
+        depends_on:
+        - wordpress
 
 volumes:
     Volumedata:
