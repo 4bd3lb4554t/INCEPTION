@@ -7,7 +7,5 @@ WORKDIR /nginx
 
 COPY ./conf/* /etc/nginx/
 
-COPY ./script.sh   /usr/local/bin/
-
-CMD ["script.sh"]
+CMD ["nginx" ,  "-g" ,  "daemon off;"]
 

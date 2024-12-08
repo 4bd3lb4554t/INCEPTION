@@ -5,31 +5,21 @@ services:
     nginx:
         depends_on:
         - wordpress
-        image: nginx_image
+        image: image_nginx
+        container_name: container_nginx
         build: ./requirements/nginx
         ports:
-        -   "443:9000"
+        -   "1337:9000"
         volumes:
             - Volumedata:/var/www/wordpress
-        networks:
-        -   inception
     wordpress:
-        image: wordpress_image
+        image: image_wordpresss
+        container_name: container_wordpresss
         build: ./requirements/wordpress
         ports:
         -   "9000:9000"
         volumes:
             - Volumedata:/var/www/wordpress
-        networks:
-            - inception
 
 volumes:
     Volumedata:
-networks:
-  inception:
-    driver: bridge
-
-    
- 
-
-        

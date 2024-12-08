@@ -11,7 +11,6 @@ WORKDIR /mariadb
 
 COPY ./script.sh  /mariadb/
 
-RUN chmod +x /mariadb/script.sh
 
 EXPOSE 3306
 
