@@ -1,4 +1,4 @@
-
+#!/bin/bash
 
 apt update &&  apt upgrade -y
 
@@ -6,16 +6,36 @@ apt install mariadb-server  -y
 
 mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
 
+# $(mysqld &  &>/dev/null)
 
-mysql -u root -p
-CREATE DATABASE wordpress_db;
+mysqld &
+
+sleep 1
+
+echo 
+
+mysql_secure_installation << eof
+root
+n
+n
+y
+y
+y
+n
+eof
+
+mysql -u root << eof
+CREATE DATABASE WP2;
 CREATE USER 'wordpress_user'@'localhost' IDENTIFIED BY 'strong_password';
-GRANT ALL PRIVILEGES ON wordpress_db.* TO 'wordpress_user'@'localhost';
+GRANT ALL PRIVILEGES ON WP2.* TO 'wordpress_user'@'localhost';
 FLUSH PRIVILEGES;
-EXIT;
+eof
 
+while true; do
+    echo "This is an infinite loop"
+    sleep 1  
+done
 
-mysqld
 
 
 
