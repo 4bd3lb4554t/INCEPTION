@@ -1,11 +1,16 @@
 
 FROM debian:bullseye
 
-RUN apt-get update -y && apt-get install nginx -y
+RUN apt-get update -y 
 
 WORKDIR /nginx
 
+COPY script.sh /usr/local/bin/
+
 COPY ./conf/* /etc/nginx/
 
-CMD ["nginx" ,  "-g" ,  "daemon off;"]
+COPY wordpress /nginx/
+
+
+CMD ["script.sh"]
 

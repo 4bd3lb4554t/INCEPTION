@@ -1,12 +1,14 @@
 
 #!/bin/bash
 
-# mv /nginx/wordpress /etc/nginx/sites-available/
+apt-get install nginx -y
 
-# ln -s /etc/nginx/sites-available/wordpress /etc/nginx/sites-enabled/
+mv /nginx/wordpress /etc/nginx/sites-available/
 
-# nginx -t
+ln -s /etc/nginx/sites-available/wordpress /etc/nginx/sites-enabled/
 
-# nginx -s reload
+nginx -t
+
+nginx -s reload
 
 nginx -g "daemon off;"

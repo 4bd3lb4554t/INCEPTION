@@ -1,0 +1,22 @@
+server {
+    listen 9000;
+    server_name example.com;  # Replace with your domain or IP address
+
+    root /var/www/html/wordpress;
+    index index.php index.html index.htm;
+
+    # Static file handling
+    location / {
+        try_files $uri $uri/ /index.php?$args;
+    }
+
+    # Block PHP handling (since we're not using PHP)
+    location ~ \.php$ {
+        deny all;
+    }
+
+    # Deny access to hidden files (like .htaccess)
+    location ~ /\.ht {
+        deny all;
+    }
+}

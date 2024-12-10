@@ -26,8 +26,8 @@ eof
 
 mysql -u root << eof
 CREATE DATABASE WP2;
-CREATE USER 'wordpress_user'@'localhost' IDENTIFIED BY 'strong_password';
-GRANT ALL PRIVILEGES ON WP2.* TO 'wordpress_user'@'localhost';
+CREATE USER 'abquaoub'@'localhost' IDENTIFIED BY '0000';
+GRANT ALL PRIVILEGES ON WP2.* TO 'abquaoub'@'localhost';
 FLUSH PRIVILEGES;
 eof
 
