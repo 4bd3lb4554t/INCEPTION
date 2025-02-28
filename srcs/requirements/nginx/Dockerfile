@@ -1,9 +1,15 @@
+FROM debian:12
 
-FROM debian:bullseye
+RUN apt  update -y && apt  upgrade -y
 
-RUN apt-get update -y && apt-get install nginx -y
+RUN apt install nginx -y && apt install vim -y
 
-WORKDIR /nginx
+COPY ./conf/default.conf /etc/nginx/conf.d
 
+COPY ./profile /usr/share/nginx/html
 
-CMD ["nginx" , "-g" , "daemon off;"]
+COPY tools/script.sh /usr/bin
+
+EXPOSE 8080
+
+CMD ["script.sh"]
