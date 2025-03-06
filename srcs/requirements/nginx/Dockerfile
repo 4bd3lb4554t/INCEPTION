@@ -1,15 +1,14 @@
 FROM debian:12
 
-RUN apt  update -y && apt  upgrade -y
+RUN apt-get  update -y && apt-get  upgrade -y
 
-RUN apt install nginx -y && apt install vim -y
+RUN apt-get install nginx -y && apt-get install  vim -y 
 
 COPY ./conf/default.conf /etc/nginx/conf.d
 
-COPY ./profile /usr/share/nginx/html
 
 COPY tools/script.sh /usr/bin
 
-EXPOSE 8080
+EXPOSE 443
 
-CMD ["script.sh"]
+CMD [ "bash" , "/usr/bin/script.sh"]
