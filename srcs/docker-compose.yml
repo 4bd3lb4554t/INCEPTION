@@ -3,38 +3,28 @@
 services:
 
     nginx:
-        image: image_nginx
-        container_name: container_nginx
+        depends_on:
+            - wordpress
+        image: nginx
+        container_name: nginx
         build: ./requirements/nginx
         ports:
-        -   "1337:9000"
+        -   "443:443"
         volumes:
-            - Volumedata:/var/www/html/wordpress
+            - Volumedata:/var/www/html
         networks:
         - wordpress_network
     wordpress:
-        depends_on:
-            - nginx
-            - mariadb
-        image: image_wordpresss
-        container_name: container_wordpresss
+        image: wordpress
+        container_name: wordpress
         build: ./requirements/wordpress
         ports:
-        -   "8080:80"
+        -   "9000:9000"
         volumes:
-            - Volumedata:/var/www/html/wordpress
+            - Volumedata:/var/www/html
         networks:
         - wordpress_network
-    mariadb:
-        depends_on:
-            - nginx
-        image: image_mariadbs
-        container_name: container_mariadbs
-        build: ./requirements/mariadb
-        volumes:
-            - Volumedata:/var/www/html/wordpress
-        networks:
-        - wordpress_network
+    
 
 volumes:
     Volumedata:
