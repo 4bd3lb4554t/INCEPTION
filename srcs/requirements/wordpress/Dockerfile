@@ -1,9 +1,10 @@
 FROM debian:12
 
+
 RUN apt-get update -y
 
-RUN apt-get install mariadb-server -y
 
 COPY ./tools/script.sh /usr/bin/
+
 
 CMD [ "bash"  , "/usr/bin/script.sh" ]
