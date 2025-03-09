@@ -2,6 +2,17 @@
 
 services:
 
+
+    wordpress:
+        image: wordpress
+        container_name: wordpress
+        build: ./requirements/wordpress
+        ports:
+        -   "9000:9000"
+        volumes:
+            - Volumedata:/var/www/html
+        networks:
+        - wordpress_network
     nginx:
         depends_on:
             - wordpress
@@ -14,17 +25,6 @@ services:
             - Volumedata:/var/www/html
         networks:
         - wordpress_network
-    wordpress:
-        image: wordpress
-        container_name: wordpress
-        build: ./requirements/wordpress
-        ports:
-        -   "9000:9000"
-        volumes:
-            - Volumedata:/var/www/html
-        networks:
-        - wordpress_network
-    
 
 volumes:
     Volumedata:
