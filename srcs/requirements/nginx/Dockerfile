@@ -6,8 +6,9 @@ RUN apt-get install nginx -y && apt-get install  vim -y
 
 COPY ./conf/default.conf /etc/nginx/conf.d
 
-
 COPY tools/script.sh /usr/bin
+
+# RUN chown -R nginx: /var/www/html
 
 EXPOSE 443
 

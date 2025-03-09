@@ -3,20 +3,10 @@
 services:
 
 
-    wordpress:
-        image: wordpress
-        container_name: wordpress
-        build: ./requirements/wordpress
-        ports:
-        -   "9000:9000"
-        volumes:
-            - Volumedata:/var/www/html
-        networks:
-        - wordpress_network
     nginx:
         depends_on:
             - wordpress
-        image: nginx
+        image: my_nginx
         container_name: nginx
         build: ./requirements/nginx
         ports:
@@ -24,11 +14,23 @@ services:
         volumes:
             - Volumedata:/var/www/html
         networks:
-        - wordpress_network
+        - inception
+        logging:
+            driver: "none"
+    wordpress:
+        image: my_wordpress
+        container_name: wordpress
+        build: ./requirements/wordpress
+        volumes:
+            - Volumedata:/var/www/html
+        networks:
+        - inception
+        logging:
+            driver: "none"
 
 volumes:
     Volumedata:
 
 networks:
-  wordpress_network:
+  inception:
     driver: bridge
