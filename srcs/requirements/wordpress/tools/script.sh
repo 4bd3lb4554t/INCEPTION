@@ -4,11 +4,11 @@ apt install php-fpm -y
 
 apt install unzip wget -y
 
-# cd /var/www/html
+cd /var/www/html
 
-# wget https://wordpress.org/latest.zip
+wget https://wordpress.org/latest.zip
 
-# unzip latest.zip
+unzip latest.zip
 
 apt install sed -y 
 

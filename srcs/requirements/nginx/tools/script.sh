@@ -20,6 +20,7 @@ end
 
 # chown -R nginx: /var/www/html
 
+echo "ready to access site  on https://abquaoub.42.fr"
+
 nginx -g "daemon off;"
 
-echo "ready to access site  on https://abquaoub.42.fr"

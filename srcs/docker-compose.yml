@@ -2,7 +2,6 @@
 
 services:
 
-
     nginx:
         depends_on:
             - wordpress
@@ -15,8 +14,7 @@ services:
             - Volumedata:/var/www/html
         networks:
         - inception
-        logging:
-            driver: "none"
+
     wordpress:
         image: my_wordpress
         container_name: wordpress
@@ -25,8 +23,7 @@ services:
             - Volumedata:/var/www/html
         networks:
         - inception
-        logging:
-            driver: "none"
+       
 
 volumes:
     Volumedata:
