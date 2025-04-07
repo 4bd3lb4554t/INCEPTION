@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sleep 10
+
 apt install php-fpm -y
 
 apt install unzip wget -y

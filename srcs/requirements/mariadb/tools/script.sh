@@ -1,13 +1,6 @@
 #!/bin/bash
 
-mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
-
-
 mysqld &
-
-sleep 1
-
-echo 
 
 mysql_secure_installation << eof
 root
@@ -19,9 +12,11 @@ y
 n
 eof
 
+# create databse 
 mysql -u root << eof
-CREATE DATABASE WP2;
-CREATE USER 'abquaoub'@'localhost' IDENTIFIED BY '0000';
-GRANT ALL PRIVILEGES ON WP2.* TO 'abquaoub'@'localhost';
+CREATE DATABASE WP;
+CREATE USER 'abquaoub'@'%' IDENTIFIED BY '0000';
+GRANT ALL PRIVILEGES ON WP.* TO 'abquaoub'@'%';
 FLUSH PRIVILEGES;
 eof
+

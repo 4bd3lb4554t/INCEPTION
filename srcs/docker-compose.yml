@@ -1,7 +1,6 @@
 
 
 services:
-
     nginx:
         depends_on:
             - wordpress
@@ -16,14 +15,37 @@ services:
         - inception
 
     wordpress:
+        depends_on:
+            - mariadb
         image: my_wordpress
         container_name: wordpress
         build: ./requirements/wordpress
+        environment:
+            WORDPRESS_DB_HOST: mariadb:3306
+            WORDPRESS_DB_NAME: WP
+            WORDPRESS_DB_USER: abquaoub
+            WORDPRESS_DB_PASSWORD: 0000
+        ports:
+            - "9000:9000"
         volumes:
             - Volumedata:/var/www/html
         networks:
         - inception
-       
+    mariadb:
+        image: my_mariadb
+        container_name: mariadb
+        build: ./requirements/mariadb
+        environment:
+            MARIADB_ROOT_PASSWORD: root
+            MARIADB_DATABASE: WP
+            MARIADB_USER: abquaoub
+            MARIADB_PASSWORD: 0000
+        ports:
+            - "3306:3306"
+        volumes:
+            - Volumedata:/var/www/html
+        networks:
+        - inception
 
 volumes:
     Volumedata:

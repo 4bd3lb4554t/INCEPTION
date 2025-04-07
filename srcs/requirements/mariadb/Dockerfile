@@ -2,8 +2,12 @@ FROM debian:12
 
 RUN apt-get update -y
 
-RUN apt-get install mariadb-server -y
+RUN apt-get install mariadb-server sed -y
 
 COPY ./tools/script.sh /usr/bin/
+
+COPY ./conf/my.cnf /etc/mysql/
+
+EXPOSE 3306
 
 CMD [ "bash"  , "/usr/bin/script.sh" ]
