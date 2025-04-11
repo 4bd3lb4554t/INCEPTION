@@ -1,12 +1,6 @@
 #!/bin/bash
 
-
-
-
-
 /etc/init.d/mariadb start
-
-
 
 
 mysql_secure_installation << eof
@@ -19,7 +13,6 @@ y
 n
 eof
 
-# mysqld_safe &
 
 mysql -u root  << eof
 CREATE DATABASE WP;
@@ -29,4 +22,4 @@ FLUSH PRIVILEGES;
 eof
 
 
-tail -f /dev/null   
+tail -f /dev/null 

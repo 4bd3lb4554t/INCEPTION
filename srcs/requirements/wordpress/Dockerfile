@@ -5,10 +5,8 @@ RUN apt-get update  -y
 RUN apt-get install -y libonig-dev libxml2-dev libmariadb-dev php-mysqli mariadb-client
 
 
-
 COPY ./tools/script.sh /usr/bin/
 
-# COPY ./conf/wp-config.php /var/www/html/
 
 EXPOSE 9000
 
