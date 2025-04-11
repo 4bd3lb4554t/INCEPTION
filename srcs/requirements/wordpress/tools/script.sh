@@ -19,5 +19,8 @@ sed -i 's/^listen = .*/listen = 0.0.0.0:9000/' /etc/php/8.2/fpm/pool.d/www.conf
 
 chown -R www-data:www-data /var/www/html
 
+rm -rf /var/www/html/wp-config-simple.php
+
+
 php-fpm8.2 -F
 
