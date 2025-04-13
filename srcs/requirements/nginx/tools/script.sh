@@ -1,12 +1,9 @@
 #!/bin/bash
 
 
-sleep 20
-
-apt-get update &&  apt-get install openssl
+sleep 15
 
 openssl genpkey -algorithm RSA -out /etc/nginx/conf.d/ssl_certificate_key.pem -pkeyopt rsa_keygen_bits:2048
-
 
 openssl req -new -x509 -key /etc/nginx/conf.d/ssl_certificate_key.pem -out /etc/nginx/conf.d/ssl_certificate.pem -days 365 << end
 MA
