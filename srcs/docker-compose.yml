@@ -22,9 +22,9 @@ services:
         build: ./requirements/wordpress
         environment:
             - WORDPRESS_DB_HOST=mariadb:3306
-            - WORDPRESS_DB_USER=abquaoub
-            - WORDPRESS_DB_PASSWORD=0000
-            - WORDPRESS_DB_NAME=WP
+            - WORDPRESS_DB_USER=${USER_WP}
+            - WORDPRESS_DB_PASSWORD=${PASS_WP}
+            - WORDPRESS_DB_NAME=${DB_WP}
         ports:
             - "9000:9000"
         volumes:
@@ -36,10 +36,10 @@ services:
         container_name: mariadb
         build: ./requirements/mariadb
         environment:
-            - MYSQL_ROOT_PASSWORD=root
-            - MYSQL_DATABASE=WP
-            - MYSQL_USER=abquaoub
-            - MYSQL_PASSWORD=0000
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT}
+            - MYSQL_DATABASE=${MYSQL_DB}
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASS}
         ports:
             - "3306:3306"
         networks:

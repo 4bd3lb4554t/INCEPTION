@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-sleep 40
+sleep 20
 
 apt-get update &&  apt-get install openssl
 
@@ -18,7 +18,6 @@ abdelbassat
 abdoqoubai@gmail.com
 end
 
-# chown -R nginx: /var/www/html
 
 echo "ready to access site  on https://abquaoub.42.fr"
 
