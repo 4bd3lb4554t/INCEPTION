@@ -14,7 +14,6 @@ wget https://wordpress.org/latest.zip
 
 unzip -o latest.zip -d /var/www/html
 
-
 rm -rf latest.zip
 
 
@@ -38,14 +37,6 @@ wp core install  --path="/var/www/html/wordpress"  --url="https://abquaoub.42.fr
 wp user create abquaoub admin@example.com --role=editor --user_pass=1234  --allow-root
 
 wp theme install astra --activate --allow-root
-
-
-# redis-cash setup 
-
-# wp plugin install redis-cache --activate --allow-root
-
-# wp redis enable --allow-root
-
 
 
 php-fpm8.2 -F
