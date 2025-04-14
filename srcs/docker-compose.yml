@@ -7,10 +7,11 @@ services:
         image: my_nginx
         container_name: nginx
         build: ./requirements/nginx
+        restart: always
         ports:
         -   "443:443"
         volumes:
-            - Volumedata:/var/www/html
+            - ./data:/var/www/html/wordpress
         networks:
         - inception
 
@@ -20,21 +21,18 @@ services:
         image: my_wordpress
         container_name: wordpress
         build: ./requirements/wordpress
-        environment:
-            - WORDPRESS_DB_HOST=mariadb:3306
-            - WORDPRESS_DB_USER=${USER_WP}
-            - WORDPRESS_DB_PASSWORD=${PASS_WP}
-            - WORDPRESS_DB_NAME=${DB_WP}
+        restart: always
         ports:
             - "9000:9000"
         volumes:
-            - Volumedata:/var/www/html
+            - ./data:/var/www/html/wordpress
         networks:
         - inception
     mariadb:
         image: my_mariadb
         container_name: mariadb
         build: ./requirements/mariadb
+        restart: always
         environment:
             - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT}
             - MYSQL_DATABASE=${MYSQL_DB}
@@ -45,8 +43,6 @@ services:
         networks:
         - inception
 
-volumes:
-    Volumedata:
 
 networks:
   inception:
