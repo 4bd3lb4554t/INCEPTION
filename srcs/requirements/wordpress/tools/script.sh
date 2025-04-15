@@ -12,6 +12,7 @@ cd /var/www/html
 wget https://wordpress.org/latest.zip
 
 
+
 unzip -o latest.zip -d /var/www/html
 
 rm -rf latest.zip
@@ -25,14 +26,18 @@ chmod +x wp-cli.phar
 mv wp-cli.phar /usr/local/bin/wp
 ###############
 
-
 mv /usr/wp-config.php  /var/www/html/wordpress/
 
 cd /var/www/html/wordpress
 
+## set up  adminer php  on wordpress  *bonus list*
+
+wget https://www.adminer.org/latest.php -O adminer.php
+
+##################
+
 
 wp core install  --path="/var/www/html/wordpress"  --url="https://abquaoub.42.fr"  --title="First Page in Wordpress" --admin_user="abdelbassat"  --admin_password="abdelbassat@@"  --admin_email="you@example.com"  --locale=fr_FR  --allow-root
-
 
 wp user create abquaoub admin@example.com --role=editor --user_pass=1234  --allow-root
 

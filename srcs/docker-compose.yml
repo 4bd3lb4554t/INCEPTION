@@ -11,7 +11,7 @@ services:
         ports:
         -   "443:443"
         volumes:
-            - ./data:/var/www/html/wordpress
+            - /home/abdelbassat/data/files:/var/www/html/wordpress
         networks:
         - inception
 
@@ -25,7 +25,7 @@ services:
         ports:
             - "9000:9000"
         volumes:
-            - ./data:/var/www/html/wordpress
+            - /home/abdelbassat/data/files:/var/www/html/wordpress
         networks:
         - inception
     mariadb:
@@ -40,6 +40,8 @@ services:
             - MYSQL_PASSWORD=${MYSQL_PASS}
         ports:
             - "3306:3306"
+        # volumes:
+        #     - /home/abdelbassat/data/database:/var/lib/mysql
         networks:
         - inception
 
