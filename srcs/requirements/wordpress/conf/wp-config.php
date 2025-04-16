@@ -37,6 +37,13 @@ define( 'DB_CHARSET', 'utf8' );
 /** The database collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
 
+
+define('WP_REDIS_ENABLED', true);
+define('WP_REDIS_HOST', 'redis');  // Hostname of the Redis service from docker-compose.yml
+define('WP_REDIS_PORT', 6379);     // Default Redis port
+
+
+///
 /**#@+
  * Authentication unique keys and salts.
  *

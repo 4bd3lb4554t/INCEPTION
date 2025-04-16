@@ -40,10 +40,32 @@ services:
             - MYSQL_PASSWORD=${MYSQL_PASS}
         ports:
             - "3306:3306"
-        # volumes:
-        #     - /home/abdelbassat/data/database:/var/lib/mysql
         networks:
         - inception
+############### services bonus
+    adminer:
+        depends_on:
+            - redis
+        image: my_adminer
+        container_name: adminer
+        build: ./requirements/bonus/adminer
+        restart: always
+        networks:
+        - inception
+    redis:
+        depends_on:
+            - wordpress
+        image: my_redis
+        container_name: redis
+        build: ./requirements/bonus/redis
+        restart: always
+        ports:
+            - "6379:6379"
+        volumes:
+            - /home/abdelbassat/data/files:/var/www/html/wordpress
+        networks:
+        - inception
+
 
 
 networks:

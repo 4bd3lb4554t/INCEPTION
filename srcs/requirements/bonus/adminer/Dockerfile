@@ -2,7 +2,7 @@ FROM debian:12
 
 RUN apt-get  update -y && apt-get upgrade -y
 
-RUN apt-get install ftp  -y 
+RUN apt-get install -y wget
 
 COPY tools/script.sh /usr/bin
 
