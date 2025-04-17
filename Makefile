@@ -1,14 +1,17 @@
 
 
 
+FILE = ./srcs/docker-compose.yml
 
 
 
+up:
+	docker compose -f ${FILE} up --build 
 
-all:
-	docker compose -f ./srcs/docker-compose.yml up --build 
+down:
+	docker compose -f ${FILE} down
 
-clean:
-	docker compose -f ./srcs/docker-compose.yml down 
+fclean:
+	docker compose -f ${FILE} down -v 
 
 re:clean all

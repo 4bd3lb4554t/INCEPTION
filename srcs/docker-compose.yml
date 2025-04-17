@@ -4,6 +4,7 @@ services:
     nginx:
         depends_on:
             - wordpress
+            - website
         image: my_nginx
         container_name: nginx
         build: ./requirements/nginx
@@ -12,6 +13,8 @@ services:
         -   "443:443"
         volumes:
             - /home/abdelbassat/data/files:/var/www/html/wordpress
+            - my_profile:/var/www/html/website
+
         networks:
         - inception
 
@@ -65,7 +68,31 @@ services:
             - /home/abdelbassat/data/files:/var/www/html/wordpress
         networks:
         - inception
+    ftp:
+        image: my_ftp
+        container_name: ftp
+        build: ./requirements/bonus/ftp
+        restart: always
+        ports:
+            - "21:21"
+            - "21100-21110:21100-21110"
+        volumes:
+            - /home/abdelbassat/data/files:/var/www/html/wordpress
+        networks:
+        - inception
+    website:
+        image: my_website
+        container_name: website
+        build: ./requirements/bonus/website
+        restart: always
+        volumes:
+            - my_profile:/var/www/html/website
+        networks:
+        - inception
 
+
+volumes:
+  my_profile:
 
 
 networks:
