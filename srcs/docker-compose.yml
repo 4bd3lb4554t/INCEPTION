@@ -12,7 +12,7 @@ services:
         ports:
         -   "443:443"
         volumes:
-            - /home/abdelbassat/data/files:/var/www/html/wordpress
+            - wp_files:/var/www/html/wordpress
             - my_profile:/var/www/html/website
 
         networks:
@@ -28,7 +28,7 @@ services:
         ports:
             - "9000:9000"
         volumes:
-            - /home/abdelbassat/data/files:/var/www/html/wordpress
+            - wp_files:/var/www/html/wordpress
         networks:
         - inception
     mariadb:
@@ -43,21 +43,23 @@ services:
             - MYSQL_PASSWORD=${MYSQL_PASS}
         ports:
             - "3306:3306"
+        volumes:
+            - database:/var/lib/mysql
         networks:
         - inception
 ############### services bonus
     adminer:
-        depends_on:
-            - redis
         image: my_adminer
         container_name: adminer
         build: ./requirements/bonus/adminer
-        restart: always
+        volumes:
+            - wp_files:/var/www/html/wordpress
         networks:
         - inception
     redis:
         depends_on:
             - wordpress
+            - adminer
         image: my_redis
         container_name: redis
         build: ./requirements/bonus/redis
@@ -65,7 +67,7 @@ services:
         ports:
             - "6379:6379"
         volumes:
-            - /home/abdelbassat/data/files:/var/www/html/wordpress
+            - wp_files:/var/www/html/wordpress
         networks:
         - inception
     ftp:
@@ -77,7 +79,7 @@ services:
             - "21:21"
             - "21100-21110:21100-21110"
         volumes:
-            - /home/abdelbassat/data/files:/var/www/html/wordpress
+            - wp_files:/var/www/html/wordpress
         networks:
         - inception
     website:
@@ -89,11 +91,33 @@ services:
             - my_profile:/var/www/html/website
         networks:
         - inception
+    cockpit:
+        image: my_cockpit
+        container_name: cockpit
+        build: ./requirements/bonus/cockpit
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+        ports:
+            - "9090:9090"
+        networks:
+        - inception
 
 
 volumes:
-  my_profile:
-
+    wp_files:
+        driver: local
+        driver_opts:
+            type: none
+            device: /home/abdelbassat/data/files/
+            o: bind
+    database:
+        driver: local
+        driver_opts:
+            type: none
+            device: /home/abdelbassat/data/database/
+            o: bind
+    my_profile: {}
+    
 
 networks:
   inception:

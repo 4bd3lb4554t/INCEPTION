@@ -7,5 +7,3 @@ cd /var/www/html/wordpress
 
 wget https://www.adminer.org/latest.php -O adminer.php
 
-
-tail -f /dev/null
