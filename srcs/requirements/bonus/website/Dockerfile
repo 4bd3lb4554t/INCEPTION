@@ -2,10 +2,11 @@ FROM debian:12
 
 RUN apt-get  update -y && apt-get upgrade -y
 
-RUN apt-get install -y wget
+RUN apt-get install -y wget nginx
 
-COPY ./conf/profile /var/www/html/website
 
-COPY tools/script.sh /usr/bin
+COPY ./conf/profile /var/www/html/
 
-CMD [ "bash" , "/usr/bin/script.sh"]
+
+
+CMD ["nginx" , "-g" , "daemon off;"]

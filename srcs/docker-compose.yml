@@ -52,8 +52,8 @@ services:
         image: my_adminer
         container_name: adminer
         build: ./requirements/bonus/adminer
-        volumes:
-            - wp_files:/var/www/html/wordpress
+        ports:
+            - "3000:3000"
         networks:
         - inception
     redis:
@@ -87,18 +87,18 @@ services:
         container_name: website
         build: ./requirements/bonus/website
         restart: always
-        volumes:
-            - my_profile:/var/www/html/website
+        ports:
+            - "4000:80"
         networks:
         - inception
-    cockpit:
-        image: my_cockpit
-        container_name: cockpit
-        build: ./requirements/bonus/cockpit
+    cadvisor:
+        image: my_cadvisor
+        container_name: cadvisor
+        build: ./requirements/bonus/cadvisor
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
         ports:
-            - "9090:9090"
+            - "8080:8080"
         networks:
         - inception
 

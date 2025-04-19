@@ -11,6 +11,7 @@ up:
 down:
 	docker compose -f ${FILE} down
 
+
 fclean:
 	docker compose -f ${FILE} down -v 
 
