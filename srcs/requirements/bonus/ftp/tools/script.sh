@@ -1,9 +1,9 @@
 #!/bin/bash
 
 
-apt install shadow -y
+apt-get install shadow -y
 
-apt install sudo -y
+apt-get install sudo -y
 
 
 

@@ -6,9 +6,10 @@ RUN apt-get install nginx openssl  -y
 
 COPY ./conf/default.conf /etc/nginx/conf.d
 
-COPY tools/script.sh /usr/bin
+COPY ./tools/script.sh /usr/local/bin/
 
 
 EXPOSE 443
 
-CMD [ "bash" , "/usr/bin/script.sh"]
+CMD ["bash" , "/usr/local/bin/script.sh"]
+
