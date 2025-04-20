@@ -25,6 +25,13 @@ services:
         container_name: wordpress
         build: ./requirements/wordpress
         restart: always
+        environment:
+            WORDPRESS_DB_HOST: ${HOST_WP}
+            WORDPRESS_DB_NAME: ${DB_WP}
+            WORDPRESS_DB_USER: ${USER_WP}
+            WORDPRESS_DB_PASSWORD: ${PASS_WP}
+            WORDPRESS_REDIS_HOST: ${HOST_REDIS}
+            WORDPRESS_REDIS_PORT: ${PORT_REDIS}
         ports:
             - "9000:9000"
         volumes:
