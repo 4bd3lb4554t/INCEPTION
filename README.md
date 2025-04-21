@@ -2,7 +2,6 @@ Sure! Here's a complete `README.md` for the **[INCEPTION](https://github.com/4bd
 
 ---
 
-```markdown
 # 🐳 INCEPTION - A Docker-based Web Infrastructure
 
 Welcome to **INCEPTION** – a 42 School project that introduces you to the world of containerized services using **Docker** and **Docker Compose**. The goal of this project is to set up a secure, scalable, and modular web infrastructure from scratch using multiple Docker containers.
@@ -19,23 +18,24 @@ This project sets up a WordPress-based web service running on an Nginx server wi
 
 Here's a breakdown of the main components and how they interact:
 
-```
-INCEPTION/
-│
+inception/
 ├── srcs/
-│   ├── docker-compose.yml     # Docker Compose configuration file
-│   ├── requirements/
-│   │   ├── mariadb/           # Dockerfile & setup for MariaDB
+│   ├── docker-compose.yml         📦 Main Docker Compose file
+│   ├── .env                       🔐 Environment variables
+│   ├── requirements/              📁 Services
+│   │   ├── mariadb/               🛢️ MariaDB setup
 │   │   │   ├── Dockerfile
-│   │   │   └── conf/          # Database initialization scripts
-│   │   ├── nginx/             # Dockerfile & setup for Nginx
+│   │   │   └── conf.sql
+│   │   ├── nginx/                 🌐 Nginx setup
 │   │   │   ├── Dockerfile
-│   │   │   └── conf/          # SSL certs and Nginx config
-│   │   └── wordpress/         # Dockerfile & setup for WordPress
+│   │   │   └── default.conf
+│   │   └── wordpress/             📝 WordPress setup
 │   │       ├── Dockerfile
-│   │       └── tools/         # WordPress installation & config
-│   └── .env                   # Environment variables (DB creds, etc.)
-├── Makefile                   # Automate setup/teardown
+│   │       └── setup.sh
+│   └── tools/                     🛠️ SSL or helper scripts (optional)
+│       └── mkcert.sh
+└── README.md                      📘 This file
+
 ```
 
 ---
@@ -162,7 +162,7 @@ Through this project, you’ll gain experience with:
    MYSQL_DATABASE=wordpress
    MYSQL_USER=wpuser
    MYSQL_PASSWORD=wppass
-   DOMAIN_NAME=yourname.42.fr
+   DOMAIN_NAME=abquaoub.42.fr
    ```
 
 3. Build and run:
@@ -186,9 +186,3 @@ Through this project, you’ll gain experience with:
 This project is licensed under the 42 School intra guidelines. Use responsibly and for educational purposes.
 
 ---
-
-> 🚧 This README is generated for educational purposes. Feel free to customize it as needed!
-
-```
-
-Let me know if you'd like to add a badge, screenshot, or deploy instructions for a cloud host like AWS or DigitalOcean.
