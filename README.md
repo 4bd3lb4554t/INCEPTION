@@ -1,4 +1,3 @@
-Sure! Here's a complete `README.md` for the **[INCEPTION](https://github.com/4bd3lb4554t/INCEPTION)** project, based on analyzing the repository structure, Dockerfiles, and configuration files.
 
 ---
 
