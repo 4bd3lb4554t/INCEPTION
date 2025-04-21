@@ -12,31 +12,54 @@ Welcome to **INCEPTION** – a 42 School project that introduces you to the worl
 This project sets up a WordPress-based web service running on an Nginx server with a MariaDB database in a secure, containerized environment. You will also configure domain names, SSL encryption, and a persistent volume system – all orchestrated through Docker Compose.
 
 ---
+Got it! I see what you mean—it's better to present the project structure in a more readable way that doesn't overwhelm the user with too much information all at once. Here’s a cleaner breakdown of the **project structure** in the `README.md` that’s easier to follow.
 
-## 🧱 Project Structure
+---
 
-Here's a breakdown of the main components and how they interact:
+## 📂 Project Structure
 
-inception/
-├── srcs/
-│   ├── docker-compose.yml         📦 Main Docker Compose file
-│   ├── .env                       🔐 Environment variables
-│   ├── requirements/              📁 Services
-│   │   ├── mariadb/               🛢️ MariaDB setup
-│   │   │   ├── Dockerfile
-│   │   │   └── conf.sql
-│   │   ├── nginx/                 🌐 Nginx setup
-│   │   │   ├── Dockerfile
-│   │   │   └── default.conf
-│   │   └── wordpress/             📝 WordPress setup
-│   │       ├── Dockerfile
-│   │       └── setup.sh
-│   └── tools/                     🛠️ SSL or helper scripts (optional)
-│       └── mkcert.sh
-└── README.md                      📘 This file
+The **INCEPTION** project is organized as follows:
 
 ```
+inception/
+├── srcs/                    # Main source directory containing configuration files
+│   ├── docker-compose.yml    # 📦 Main Docker Compose configuration file to orchestrate services
+│   ├── .env                 # 🔐 Environment variables for database credentials, domain, etc.
+│   ├── requirements/         # 📁 Directory containing individual service setups
+│   │   ├── mariadb/          # 🛢️ MariaDB setup and configuration
+│   │   │   ├── Dockerfile    # Dockerfile to build the MariaDB container
+│   │   │   └── conf.sql      # SQL script to initialize the MariaDB database
+│   │   ├── nginx/            # 🌐 Nginx setup and configuration
+│   │   │   ├── Dockerfile    # Dockerfile to build the Nginx container
+│   │   │   └── default.conf  # Nginx default server configuration (including SSL)
+│   │   └── wordpress/        # 📝 WordPress setup and configuration
+│   │       ├── Dockerfile    # Dockerfile to build the WordPress container
+│   │       └── setup.sh      # Shell script for setting up WordPress (e.g., database connection)
+│   └── tools/                # 🛠️ Additional tools, like SSL certificates or helper scripts
+│       └── mkcert.sh         # Script to generate SSL certificates (optional)
+└── README.md                 # 📘 This file (project documentation)
+```
 
+---
+
+### 🔍 Breakdown of Key Files and Folders
+
+- **`docker-compose.yml`**  
+  The main orchestration file that ties together the services (MariaDB, WordPress, Nginx) and manages container networking and persistence.
+
+- **`.env`**  
+  Contains sensitive data like database credentials, and environment variables such as domain names or paths that are used across services.
+
+- **`requirements/`**  
+  Contains the individual Dockerfiles and configuration files for each service:
+  - **`mariadb/`** – Configures and sets up the MariaDB database.
+  - **`nginx/`** – Configures Nginx as a reverse proxy and web server.
+  - **`wordpress/`** – Configures the WordPress service to connect with MariaDB and serve the content.
+
+- **`tools/`**  
+  Optional helper scripts for tasks like generating SSL certificates with `mkcert.sh`.
+
+---
 ---
 
 ## 🚀 Services Explained
