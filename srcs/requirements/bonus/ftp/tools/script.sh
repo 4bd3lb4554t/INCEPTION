@@ -1,25 +1,13 @@
 #!/bin/bash
 
+#  create user and change owner of /var/www/... to new user and give him permissions
+useradd -m abquaoub
 
-apt-get install shadow -y
+echo "abquaoub:${PASS_USER}" | chpasswd
 
-apt-get install sudo -y
+chown -R abquaoub:abquaoub /var/www/html/wordpress
 
-
-
-useradd -m abquaoub 
-
-echo "abquaoub:0000" | chpasswd
-
-
-chown abquaoub:abquaoub /var/www/html/wordpress
-
-chmod a-w /var/www/html/wordpress
-
-chmod 755 /var/www/html/wordpress
-
-
-mkdir -p /var/run/vsftpd/empty
+chmod 740 /var/www/html/wordpress
 
 
 vsftpd /etc/vsftpd.conf

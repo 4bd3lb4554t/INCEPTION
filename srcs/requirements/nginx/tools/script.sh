@@ -1,7 +1,6 @@
 #!/bin/bash
 
-
-sleep 15
+sleep 7
 
 openssl genpkey -algorithm RSA -out /etc/nginx/conf.d/ssl_certificate_key.pem -pkeyopt rsa_keygen_bits:2048
 

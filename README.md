@@ -180,11 +180,19 @@ Through this project, you’ll gain experience with:
 
 2. Configure your `.env` file:
    ```env
-   MYSQL_ROOT_PASSWORD=supersecret
-   MYSQL_DATABASE=wordpress
-   MYSQL_USER=wpuser
-   MYSQL_PASSWORD=wppass
-   DOMAIN_NAME=abquaoub.42.fr
+
+USER_WP=login
+PASS_WP=0000
+DB_WP=WP
+HOST_WP=mariadb:3306
+
+MYSQL_ROOT=root
+MYSQL_DB=WP
+MYSQL_USER=login
+MYSQL_PASS=0000
+
+HOST_REDIS=redis
+PORT_REDIS=6379
    ```
 
 3. Build and run:
@@ -192,7 +200,7 @@ Through this project, you’ll gain experience with:
    make
    ```
 
-4. Access your site at `https://yourname.42.fr`
+4. Access your site at `https://login.42.fr`
 
 ---
 

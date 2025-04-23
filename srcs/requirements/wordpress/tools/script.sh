@@ -18,7 +18,6 @@ mv wp-cli.phar wp
 
 
 
-
 mv /usr/wp-config.php  /var/www/html/wordpress/
 
 
@@ -32,16 +31,13 @@ sed -i "s/port_redis/$WORDPRESS_REDIS_PORT/" /var/www/html/wordpress/wp-config.p
 
 
 
-
 ./wp core install  --path="/var/www/html/wordpress"  --url="https://abquaoub.42.fr"  --title="First Page in Wordpress" --admin_user="abdelbassat"  --admin_password="abdelbassat@@"  --admin_email="you@example.com"  --locale=fr_FR  --allow-root
 ./wp user create abquaoub admin@example.com --role=editor --user_pass=1234  --allow-root
 ./wp theme install astra --activate --allow-root
 
 
-
 ./wp plugin install redis-cache --activate --allow-root
 ./wp redis enable --allow-root
-
 
 
 php-fpm8.2 -F

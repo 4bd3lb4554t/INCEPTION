@@ -1,8 +1,10 @@
 FROM debian:12
 
-RUN apt-get  update -y && apt-get upgrade -y
+RUN apt-get  update  && apt-get upgrade -y
 
-RUN apt-get install -y vsftpd   
+RUN apt-get install -y vsftpd
+
+WORKDIR /ftp
 
 COPY ./tools/script.sh /usr/local/bin/
 
