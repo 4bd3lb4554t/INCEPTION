@@ -41,5 +41,6 @@ sed -i "s/port_redis/$PORT_REDIS/" /var/www/html/wordpress/wp-config.php
 ./wp plugin install redis-cache --activate --allow-root
 ./wp redis enable --allow-root
 
+rm -rf ./wp
 
 php-fpm8.2 -F

@@ -4,20 +4,16 @@ sleep 7
 
 chmod 755 /var/www/html/wordpress/
 
-openssl genpkey -algorithm RSA -out /etc/nginx/conf.d/ssl_certificate_key.pem -pkeyopt rsa_keygen_bits:2048
-
-openssl req -new -x509 -key /etc/nginx/conf.d/ssl_certificate_key.pem -out /etc/nginx/conf.d/ssl_certificate.pem -days 365 << end
-MA
-abdelbassat quaoubai
-UM6P
-1337
-inception
-abdelbassat
-abdoqoubai@gmail.com
-end
+openssl genpkey -algorithm RSA \
+                -out /etc/nginx/conf.d/ssl_certificate_key.pem \
+                -pkeyopt rsa_keygen_bits:2048
 
 
-echo "ready to access site  on https://abquaoub.42.fr"
+openssl req -x509 -nodes -days 365 \
+            -newkey rsa:2048 \
+            -keyout /etc/nginx/conf.d/ssl_certificate_key.pem \
+            -out /etc/nginx/conf.d/ssl_certificate.pem \
+            -subj "/C=/ST=/L=/O=/OU=/CN=/emailAddress="
 
 nginx -g "daemon off;"
 
